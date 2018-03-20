@@ -1,0 +1,13 @@
+.main-div{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 10px auto;
+}
