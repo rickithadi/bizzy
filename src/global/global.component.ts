@@ -14,16 +14,25 @@ import { Component, OnInit } from '@angular/core';
  volume
    <input matInput type="number" [(ngModel)]="globe.Gvolume" value={{globe.Gvolume}}/>
 </div>
-
+<br>
 <div class="center">
   modifier
+  </div>
+
+
+  <div class="center">
+
   <mat-slider min="1" max="5" step="0.5"[(ngModel)]="globe.Gmodifier" value={{globe.Gmodifier}}></mat-slider>{{globe.Gmodifier}}
 
 
         </div>
 
+
         <div class="center">
  Gpax
+   </div>
+
+        <div class="center">
         <mat-slider min="1" max="5" step="0.5"[(ngModel)]="globe.Gpax" value={{globe.Gpax}}></mat-slider>{{globe.Gpax}}
         </div>
 

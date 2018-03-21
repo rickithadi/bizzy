@@ -4,10 +4,10 @@ import { User } from './data-model';
 @Injectable()
 export class UserService {
   private nextId: number;
-  private users: User[];
+
   constructor() {
     let users = this.getusers();
-    if (users.length === 0) {
+    if (users.length == 0) {
       this.nextId = 0;
     } else {
       let maxId = users[users.length - 1].id;
@@ -34,13 +34,12 @@ export class UserService {
     return localStorageItem == null ? [] : localStorageItem.users;
   }
 
-  public removeuser(id: number): void {
-    let users = this.getusers();
-    users = users.filter(user => user.id === id);
-    this.setLocalStorageusers(users);
-  }
-
   private setLocalStorageusers(users: User[]): void {
     localStorage.setItem('users', JSON.stringify({ users: users }));
+  }
+  public removeuser(id: number): void {
+    let users = this.getusers();
+    users = users.filter(user => user.id != id);
+    this.setLocalStorageusers(users);
   }
 }

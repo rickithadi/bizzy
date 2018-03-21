@@ -36,6 +36,7 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {}
+
   private addUser(): void {
     this.userService.adduser(this.name, this.shots, this.volume, this.modifier);
     this.name = '';

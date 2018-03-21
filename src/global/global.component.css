@@ -11,3 +11,6 @@
   width: 100%;
   margin: 10px auto;
 }
+mat-slider {
+  width: 600px;
+}

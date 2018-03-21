@@ -34,6 +34,5 @@ export class UserDetailComponent implements OnInit {
   }
   private viewUser(): void {
     console.log(this.user);
-
   }
 }
