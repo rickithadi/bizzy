@@ -8,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  localGlobals = JSON.parse(localStorage.getItem('globe'));
+  Arr = Array;
+  num: number;
 
-  constructor(private userService: UserService) {}
+  constructor() {
+
+    this.localGlobals = JSON.parse(localStorage.getItem('globe'));
+    this.num = this.localGlobals.Gpax;
+    console.log(this.localGlobals.Gpax);
+  }
 }

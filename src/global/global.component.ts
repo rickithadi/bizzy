@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-global',
@@ -40,12 +40,15 @@ import { Component, OnInit } from '@angular/core';
         <button mat-button class="btn btn-primary" (click)="submit()">Submit</button>
           <br>
 
-
+<app-players [count]="globe.Gpax"> </app-players>
 </div>
+
+
 `,
   styleUrls: ['./global.component.css']
 })
 export class GlobalComponent implements OnInit {
+  initialCount = 10;
   globe = {
     Gshots: 0,
     Gvolume: 0,
@@ -54,7 +57,7 @@ export class GlobalComponent implements OnInit {
   };
 
   constructor() {
-   localStorage.setItem('globe', JSON.stringify(this.globe));
+    localStorage.setItem('globe', JSON.stringify(this.globe));
   }
 
   ngOnInit() {}

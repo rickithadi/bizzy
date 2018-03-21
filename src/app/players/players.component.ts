@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-players',
   template: `
-  <button mat-button class="btn btn-primary" (click)="refresh()">refresh</button>
-  <div  *ngFor="let i of Arr(num).fill(1)">
+
+  <div  *ngFor="let i of Arr(count).fill(1)">
 
   name
     <input matInput type="text" [(ngModel)]="user.name" />
@@ -25,8 +25,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
-  localGlobals = JSON.parse(localStorage.getItem('globe'));
-  Arr = Array; //Array type captured in a variable
+  @Input() count;
+
+  Arr = Array;
   num: number;
   userList = [];
   user = {
@@ -36,25 +37,16 @@ export class PlayersComponent implements OnInit {
     modifier: 1,
     name: ''
   };
-  //arr = new Array<object>(this.localGlobals.Gpax);
+
   constructor() {}
 
   ngOnInit() {
-    this.localGlobals = JSON.parse(localStorage.getItem('globe'));
-    this.num = this.localGlobals.Gpax;
-    console.log(this.localGlobals.Gpax);
+    console.log('Pasesed', this.count);
   }
 
-  private addUser(): void {
-    //var key = '' + this.user.id;
-    // this.arr.push(this.user);
-    // localStorage.setItem('user', JSON.stringify(this.user));
-    // this.user.id = this.user.id + 1;
-  }
+  private addUser(): void {}
 
   private refresh() {
-    this.localGlobals = JSON.parse(localStorage.getItem('globe'));
-    this.num = this.localGlobals.Gpax;
-    console.log(this.localGlobals.Gpax);
+    console.log('Pasesed', this.count);
   }
 }
