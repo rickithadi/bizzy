@@ -6,8 +6,9 @@ import { UserService } from '../user-list/user.service';
   template: `<div class="userWrapper">
   <br>
   <br>
-  <button mat-raised-button color="primary"(click)="removeUser()">remove</button>
   <button mat-raised-button color="primary"(click)="viewUser()">view</button>
+  <button mat-raised-button color="primary"(click)="removeUser()">remove</button>
+  <button mat-raised-button color="primary"(click)="addUser()">add</button>
 name
   <input matInput  type="text"value={{user.name}}>
 
@@ -25,10 +26,23 @@ volume
 })
 export class UserDetailComponent implements OnInit {
   @Input() private user: User;
+
+  private localGlobals = JSON.parse(localStorage.getItem('globe'));
   private users = JSON.parse(localStorage.getItem('users'));
   constructor(private userService: UserService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.localGlobals.Gpax);
+  }
+  private addUser(): void {
+    this.userService.adduser(
+      this.user.name,
+      this.user.shots,
+      this.user.volume,
+      this.user.modifier
+    );
+  }
+
   private removeUser(): void {
     this.userService.removeuser(this.user.id);
   }
