@@ -1,3 +1,4 @@
+import { PlayerService } from './players/player.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'; // <-- #1 import module
@@ -14,7 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
-import {GlobalComponent} from '../global/global.component';
+import { GlobalComponent } from '../global/global.component';
 
 import { UserService } from '../user-list/user.service';
 
@@ -45,7 +46,7 @@ import { PlayersComponent } from './players/players.component';
     MatTableModule,
     MatTabsModule
   ],
-  providers: [UserService],
+  providers: [UserService, PlayerService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

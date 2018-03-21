@@ -1,15 +1,17 @@
-import { USERS } from './../../user-list/data-model';
+import { Player } from './player';
 import { Component, OnInit, Input } from '@angular/core';
+import { PlayerService } from './player.service';
+import { clone } from 'lodash';
 @Component({
   selector: 'app-players',
   template: `
 
-<div *ngFor="let user of users; let i = index">
+<div *ngFor="let player of players; let i = index">
 <div *ngIf="i<count">
-{{user.id}}
-{{user.name}}
-</div>
+{{player.id}}
+{{player.name}}
 
+</div>
             </div>
   name
     <input matInput type="text"   />
@@ -27,12 +29,18 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
-  users = USERS;
+  players: Player[];
   @Input() count;
   someArray: [9, 2, 5];
   Arr = Array;
   num: number;
   arr1: number[] = [];
+
+  playerForm = false;
+  editPlayerForm = false;
+  isNewForm: boolean;
+  newPlayer: any = {};
+  editedPlayer: any = {};
 
   user = {
     id: 1,
@@ -42,22 +50,60 @@ export class PlayersComponent implements OnInit {
     name: ''
   };
 
-  constructor() {}
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit() {
-    this.addUser();
-    console.log('Pasesed', this.count);
-    console.log(this.Arr(this.count));
+    this.getPlayers();
+    console.log(this.players);
   }
 
-  private addUser(): void {
-    for (let i = 1; i < this.count + 1; i++) {
-      this.arr1.push(369);
+  getPlayers() {
+    this.players = this.playerService.getPlayersFromData();
+  }
+
+  showEditPlayerForm(player: Player) {
+    if (!player) {
+      this.playerForm = false;
+      return;
     }
-    console.log(this.arr1);
+    this.editPlayerForm = true;
+    this.editedPlayer = clone(player);
   }
 
-  private refresh() {
-    console.log('Pasesed', this.count);
+  showAddPlayerForm() {
+    // resets form if edited player
+    if (this.players.length) {
+      this.newPlayer = {};
+    }
+    this.playerForm = true;
+    this.isNewForm = true;
+  }
+
+  savePlayer(player: Player) {
+    if (this.isNewForm) {
+      // add a new player
+      this.playerService.addPlayer(player);
+    }
+    this.playerForm = false;
+  }
+
+  removePlayer(player: Player) {
+    this.playerService.deletePlayer(player);
+  }
+
+  updatePlayer() {
+    this.playerService.updatePlayer(this.editedPlayer);
+    this.editPlayerForm = false;
+    this.editedPlayer = {};
+  }
+
+  cancelNewPlayer() {
+    this.newPlayer = {};
+    this.playerForm = false;
+  }
+
+  cancelEdits() {
+    this.editedPlayer = {};
+    this.editPlayerForm = false;
   }
 }

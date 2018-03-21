@@ -15,7 +15,7 @@ export class AppComponent {
   constructor() {
 
     this.localGlobals = JSON.parse(localStorage.getItem('globe'));
-    this.num = this.localGlobals.Gpax;
-    console.log(this.localGlobals.Gpax);
+  //  this.num = this.localGlobals.Gpax;
+    //console.log(this.localGlobals.Gpax);
   }
 }
