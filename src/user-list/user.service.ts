@@ -42,4 +42,21 @@ export class UserService {
     users = users.filter(user => user.id != id);
     this.setLocalStorageusers(users);
   }
+
+  public moduser(
+    id: number,
+    name: string,
+    shots: number,
+    volume: number,
+    modifier: number
+  ): void {
+    let users = this.getusers();
+    users = users.filter(user => user.id != id);
+    let Muser = new User(id, name, shots, volume, modifier);
+
+    users.push(Muser);
+
+    this.setLocalStorageusers(users);
+    console.log(users);
+  }
 }

@@ -33,7 +33,7 @@ import { Component, OnInit } from '@angular/core';
    </div>
 
         <div class="center">
-        <mat-slider min="1" max="5" step="0.5"[(ngModel)]="globe.Gpax" value={{globe.Gpax}}></mat-slider>{{globe.Gpax}}
+        <mat-slider min="1" max="5" step="1"[(ngModel)]="globe.Gpax" value={{globe.Gpax}}></mat-slider>{{globe.Gpax}}
         </div>
 
         <div class="center">
@@ -50,11 +50,11 @@ export class GlobalComponent implements OnInit {
     Gshots: 0,
     Gvolume: 0,
     Gmodifier: 1,
-    Gpax: 2
+    Gpax: 4
   };
 
   constructor() {
-    localStorage.setItem('globe', JSON.stringify(this.globe));
+   localStorage.setItem('globe', JSON.stringify(this.globe));
   }
 
   ngOnInit() {}

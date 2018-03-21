@@ -8,17 +8,17 @@ import { UserService } from '../user-list/user.service';
   <br>
   <button mat-raised-button color="primary"(click)="viewUser()">view</button>
   <button mat-raised-button color="primary"(click)="removeUser()">remove</button>
-  <button mat-raised-button color="primary"(click)="addUser()">add</button>
+  <button mat-raised-button color="primary"(click)="modUser()">add</button>
 name
-  <input matInput  type="text"value={{user.name}}>
+  <input matInput  type="text" value={{this.user.name}}>
 
 shots
-  <input matInput  type="number" value={{user.shots}}>
+  <input matInput  type="number"  value={{user.shots}}>
 volume
-  <input matInput type="number" value={{user.volume}}>
+  <input matInput type="number"value={{user.volume}}>
   modifier
 
-  <mat-slider min="1" max="5" step="0.5"value={{user.modifier}}></mat-slider>{{user.modifier}}
+  <mat-slider min="1" max="5" step="0.5" value={{user.modifier}}></mat-slider>{{user.modifier}}
 
 </div>
 `,
@@ -27,15 +27,16 @@ volume
 export class UserDetailComponent implements OnInit {
   @Input() private user: User;
 
-  private localGlobals = JSON.parse(localStorage.getItem('globe'));
+  // private localGlobals = JSON.parse(localStorage.getItem('globe'));
   private users = JSON.parse(localStorage.getItem('users'));
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    console.log(this.localGlobals.Gpax);
+
   }
-  private addUser(): void {
-    this.userService.adduser(
+  private modUser(): void {
+    this.userService.moduser(
+      this.user.id,
       this.user.name,
       this.user.shots,
       this.user.volume,
