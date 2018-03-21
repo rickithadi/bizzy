@@ -39,10 +39,11 @@ import { Component, OnInit, Input } from '@angular/core';
         <div class="center">
         <button mat-button class="btn btn-primary" (click)="submit()">Submit</button>
           <br>
-
-<app-players [count]="globe.Gpax"> </app-players>
 </div>
+<div class="center">
+<app-players [count]="globe.Gpax"> </app-players>
 
+</div>
 
 `,
   styleUrls: ['./global.component.css']
