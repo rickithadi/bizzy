@@ -5,13 +5,13 @@ import { Component, OnInit, Input } from '@angular/core';
   template: `
   <br>
   <div class="main-div">
-  shots
+  shots:
   <input matInput type="number" [(ngModel)]="globe.Gshots" value={{globe.Gshots}}/>
  </div>
  <br>
 
   <div class="main-div">
- volume
+ volume:
    <input matInput type="number" [(ngModel)]="globe.Gvolume" value={{globe.Gvolume}}/>
 </div>
 <br>

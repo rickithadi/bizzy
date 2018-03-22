@@ -17,18 +17,18 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AppComponent } from './app.component';
 import { GlobalComponent } from '../global/global.component';
 
-import { UserService } from '../user-list/user.service';
+// import { UserService } from '../user-list/user.service';
 
 import { UserListComponent } from '../user-list/user-list.component';
-import { UserDetailComponent } from '../user-detail/user-detail.component';
+// import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { PlayersComponent } from './players/players.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GlobalComponent,
-    UserListComponent,
-    UserDetailComponent,
+    //UserListComponent,
+    //UserDetailComponent,
     PlayersComponent
   ],
   imports: [
@@ -46,7 +46,7 @@ import { PlayersComponent } from './players/players.component';
     MatTableModule,
     MatTabsModule
   ],
-  providers: [UserService, PlayerService],
+  providers: [ PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

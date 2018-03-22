@@ -11,15 +11,16 @@ import { clone } from 'lodash';
 {{player.id}}
 {{player.name}}
 
-</div>
-            </div>
-  name
-    <input matInput type="text"   />
 
+    <input matInput type="text" value={{player.name}}  [(ngModel)]="player.name" value='1'>
 
     modifier
-          <mat-slider min="1" max="5" step="0.5"[(ngModel)]="user.modifier" value='1'></mat-slider>{{user.modifier}}
-      <button mat-button class="btn btn-primary" (click)="addUser()">Submit</button>
+          <mat-slider min="1" max="5" step="0.5"[(ngModel)]="player.modifier" value='1'></mat-slider>{{player.modifier}}
+ <button mat-button class="btn btn-primary" (click)="updatePlayer()">edit</button>
+   </div>
+            </div>
+
+
   <br>
 
 
@@ -50,7 +51,9 @@ export class PlayersComponent implements OnInit {
     name: ''
   };
 
-  constructor(private playerService: PlayerService) {}
+  constructor(private playerService: PlayerService) {
+    localStorage.setItem('players', JSON.stringify(this.players));
+  }
 
   ngOnInit() {
     this.getPlayers();
