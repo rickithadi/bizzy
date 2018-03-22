@@ -22,6 +22,7 @@ export class PlayerService {
       return p.id === player.id;
     });
     this.pItems[index] = player;
+    console.log(this.pItems);
   }
 
   deletePlayer(player: Player) {
