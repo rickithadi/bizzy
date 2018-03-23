@@ -26,7 +26,7 @@ import { AppComponent } from './app.component';
 import { GlobalComponent } from '../global/global.component';
 
 import { PlayersComponent } from './players/players.component';
-import { QuestionsComponent } from './questions/questions.component';
+import { QuestionsComponent } from './side/questions.component';
 
 
 @NgModule({

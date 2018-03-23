@@ -1,10 +1,15 @@
 
-
-
 <div *ngFor="let player of players; let i = index">
-
+    <div *ngIf="i<count">
+  <br>
+  <br>
+  <br>
+<br>
 {{player.name}}
 <br>
 shots: {{player.shots}}
 volume: {{player.volume}}
+<br>
+
+</div>
 </div>

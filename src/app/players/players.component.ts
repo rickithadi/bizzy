@@ -12,11 +12,11 @@ import { clone } from 'lodash';
 {{player.name}}
 
 
-    <input matInput type="text" value={{player.name}}  [(ngModel)]="player.name" value='1'>
+    <input matInput type="text" value={{player.name}}   (change)="updatePlayer()"[(ngModel)]="player.name" value='1'>
 
     modifier
-          <mat-slider min="1" max="5" step="0.5"[(ngModel)]="player.modifier" value='1'></mat-slider>{{player.modifier}}
- <button mat-button class="btn btn-primary" (click)="updatePlayer()">edit</button>
+          <mat-slider min="1" max="5" step="0.5"[(ngModel)]="player.modifier" (change)="updatePlayer()" value='1'></mat-slider>{{player.modifier}}
+
    </div>
             </div>
 
@@ -36,12 +36,6 @@ export class PlayersComponent implements OnInit {
   Arr = Array;
   num: number;
   arr1: number[] = [];
-
-  playerForm = false;
-  editPlayerForm = false;
-  isNewForm: boolean;
-  newPlayer: any = {};
-  editedPlayer: any = {};
 
   user = {
     id: 1,
@@ -67,49 +61,11 @@ export class PlayersComponent implements OnInit {
     this.players = this.playerService.getPlayersFromData();
   }
 
-  showEditPlayerForm(player: Player) {
-    if (!player) {
-      this.playerForm = false;
-      return;
-    }
-    this.editPlayerForm = true;
-    this.editedPlayer = clone(player);
-  }
-
-  showAddPlayerForm() {
-    // resets form if edited player
-    if (this.players.length) {
-      this.newPlayer = {};
-    }
-    this.playerForm = true;
-    this.isNewForm = true;
-  }
-
-  savePlayer(player: Player) {
-    if (this.isNewForm) {
-      // add a new player
-      this.playerService.addPlayer(player);
-    }
-    this.playerForm = false;
-  }
-
   removePlayer(player: Player) {
     this.playerService.deletePlayer(player);
   }
 
-  updatePlayer() {
-    this.playerService.updatePlayer(this.editedPlayer);
-    this.editPlayerForm = false;
-    this.editedPlayer = {};
-  }
-
-  cancelNewPlayer() {
-    this.newPlayer = {};
-    this.playerForm = false;
-  }
-
-  cancelEdits() {
-    this.editedPlayer = {};
-    this.editPlayerForm = false;
+  updatePlayer(player: Player) {
+    this.playerService.updatePlayer(player);
   }
 }

@@ -6,13 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   <br>
   <div class="main-div">
   shots:
-  <input matInput type="number" [(ngModel)]="globe.Gshots" value={{globe.Gshots}}/>
+  <input matInput type="number" [(ngModel)]="globe.Gshots" (change)="submit()" value={{globe.Gshots}}/>
  </div>
  <br>
 
   <div class="main-div">
  volume:
-   <input matInput type="number" [(ngModel)]="globe.Gvolume" value={{globe.Gvolume}}/>
+   <input matInput type="number" [(ngModel)]="globe.Gvolume" (change)="submit()" value={{globe.Gvolume}}/>
 </div>
 <br>
 <div class="center">
@@ -22,7 +22,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
   <div class="center">
 
-  <mat-slider min="1" max="5" step="0.5"[(ngModel)]="globe.Gmodifier" value={{globe.Gmodifier}}></mat-slider>{{globe.Gmodifier}}
+  <mat-slider min="1" max="5" step="0.5"[(ngModel)]="globe.Gmodifier" (change)="submit()"value={{globe.Gmodifier}} ></mat-slider>{{globe.Gmodifier}}
 
 
         </div>
@@ -33,13 +33,10 @@ import { Component, OnInit, Input } from '@angular/core';
    </div>
 
         <div class="center">
-        <mat-slider min="1" max="5" step="1"[(ngModel)]="globe.Gpax" value={{globe.Gpax}}></mat-slider>{{globe.Gpax}}
+        <mat-slider min="1" max="5" step="1"[(ngModel)]="globe.Gpax" (change)="submit()"value={{globe.Gpax}} ></mat-slider>{{globe.Gpax}}
         </div>
 
-        <div class="center">
-        <button mat-button class="btn btn-primary" (click)="submit()">Submit</button>
-          <br>
-</div>
+
 <div class="center">
 <app-players [count]="globe.Gpax"> </app-players>
 
@@ -65,5 +62,6 @@ export class GlobalComponent implements OnInit {
 
   private submit() {
     localStorage.setItem('globe', JSON.stringify(this.globe));
+    console.log('submitted globals');
   }
 }
