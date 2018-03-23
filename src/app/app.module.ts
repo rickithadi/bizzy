@@ -1,4 +1,5 @@
 import { PlayerService } from './players/player.service';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'; // <-- #1 import module
@@ -13,14 +14,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
+import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import { GlobalComponent } from '../global/global.component';
 
 import { PlayersComponent } from './players/players.component';
+import { QuestionsComponent } from './questions/questions.component';
+
 
 @NgModule({
-  declarations: [AppComponent, GlobalComponent, PlayersComponent],
+  declarations: [
+    AppComponent,
+    GlobalComponent,
+    PlayersComponent,
+    QuestionsComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -34,7 +49,13 @@ import { PlayersComponent } from './players/players.component';
     MatExpansionModule,
     FormsModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatIconModule,
+    HttpModule
   ],
   providers: [PlayerService],
   bootstrap: [AppComponent]

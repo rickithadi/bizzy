@@ -1,7 +1,23 @@
 <div class="container">
 
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [opened]="screenWidth > 840" [mode]="(screenWidth > 840) ? 'side' : 'over'">
+      <div class="sidenav-header">
+        <app-questions></app-questions>
+      </div>
+    </mat-sidenav>
+
+    <div [ngStyle]="{'display' : (screenWidth > 840) ? 'none' : 'block'}">
+      <button mat-button type="button" md-button (click)="sidenav.open()">
+        <i class="material-icons">face</i>
+
+      </button>
+
+
   <mat-tab-group>
+
     <mat-tab label="global setup">
+
       <div class="global-wrapper">
         <app-global> </app-global>
 
@@ -10,16 +26,16 @@
     </mat-tab>
     <mat-tab label="play">
       <div class="user-wrapper">
-        <!-- <app-user-list></app-user-list>
-        <div *ngFor="let user of userService.getusers()">
-          <app-user-detail [user]="user"></app-user-detail>
-        </div> -->
-        <!-- <div  *ngFor="let i of Arr(num).fill(1)"> -->
-        <!-- <app-players>[Gpax] = "Gpax" </app-players> -->
-        </div>
+
+      </div>
       <!-- </div> -->
 
     </mat-tab>
   </mat-tab-group>
 
+</div>
+
+
+
+  </mat-sidenav-container>
 </div>

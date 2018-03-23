@@ -52,6 +52,7 @@ export class PlayersComponent implements OnInit {
   };
 
   constructor(private playerService: PlayerService) {
+    this.getPlayers();
     localStorage.setItem('players', JSON.stringify(this.players));
     console.log('Set', this.players);
   }
