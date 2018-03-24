@@ -23,7 +23,7 @@ import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
-import { GlobalComponent } from '../global/global.component';
+import { GlobalComponent } from './global/global.component';
 
 import { PlayersComponent } from './players/players.component';
 import { QuestionsComponent } from './side/questions.component';
